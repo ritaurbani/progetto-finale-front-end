@@ -1,14 +1,7 @@
 
 import { useState, useEffect } from 'react'
+import { BankProduct } from '../types'
 
-type BankProduct = {
-    title: string;
-    category: string;
-    bankName: string;
-    description: string;
-    rate: number;
-    durationInYears: number;
-}
 
 type UseProductsReturnType = {
     isLoading: boolean,
@@ -16,7 +9,7 @@ type UseProductsReturnType = {
     products: BankProduct[]
 }
 
-const API_URL = "http://localhost:3002"
+const API_URL = "http://localhost:3001"
 
 export const useProducts = (): UseProductsReturnType => {
     const [bankProducts, setBankProducts] = useState<BankProduct[]>([])
@@ -52,6 +45,6 @@ export const useProducts = (): UseProductsReturnType => {
         fetchProducts()
     }, [])
 
-
-    return { products: bankProducts, isLoading, error }
+//alias e proprieta
+    return {products: bankProducts, isLoading, error }
 }

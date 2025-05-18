@@ -1,16 +1,14 @@
 import { useProducts } from "../CustomHooks/useProducts"
+import { AccountList } from "../Components/AccountList"
 
 const Home = () => {
-  const { isLoading, error, bankProducts } = useProducts()
+  const { isLoading, error, products } = useProducts()
 
   return (
     <div>
-      {
-        // bankProducts.map((p:string) =>(
-
-        // ))
-      }
-
+      <AccountList
+      bankAccounts={products} //stesso tipo
+      />
     </div>
   )
 }

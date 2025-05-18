@@ -1,9 +1,26 @@
-import React from 'react'
+import { BankProduct } from "../types.ts"
 
-const AccountList = () => {
+//prop di questo component e bankaccount
+type Props = {
+  bankAccounts: BankProduct[]
+}
+
+
+
+
+export const AccountList = ({ bankAccounts }: Props) => {
+
+
   return (
-    <div>AccountList</div>
+    <div>
+      <ul>
+        {
+          bankAccounts.map((account, index) => (
+            <li key={index}>{account.title}</li>
+          ))
+        }
+      </ul>
+    </div>
   )
 }
 
-export default AccountList

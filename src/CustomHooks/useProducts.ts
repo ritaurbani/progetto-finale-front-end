@@ -32,7 +32,7 @@ export const useProducts = (): UseProductsReturnType => {
             const data = await response.json()
 
             setBankProducts(data)
-        } catch (error: unknown) {
+        } catch (error: unknown) {//di default e unknown-non puoi usare erro senza prima verificare il suo tipo-forza type checking
             if (error instanceof Error) {
                 setError(error.message)
             }
@@ -45,6 +45,43 @@ export const useProducts = (): UseProductsReturnType => {
         fetchProducts()
     }, [])
 
-//alias e proprieta
+    //oggetto piu flessibili quando ci sono più valori da ritornare (es. dati, loading, errori).
+    //se ritorno array poi devo ricordare ordine elems
     return {products: bankProducts, isLoading, error }
+    //products → Nome della proprietà nell'oggetto ritornato (quello che vedrà chi usa il hook).
+    // bankProducts → Variabile interna al hook.
+    // Se hai definito un tipo per il ritorno del hook(es.UseProductsReturnType), devi assicurarti che i nomi delle proprietà coincidano:
+    // type UseProductsReturnType = {
+    //     products: BankProduct[]; // Tipo atteso
+    // };
+
+    // return {
+    //     prodotti: bankProducts // ❌ ERRORE: "prodotti" non è una proprietà del tipo!
+    //   };
+
 }
+
+// type inline
+//se ritorni solo array no oggetto-const useProducts = (): BankProduct[] 
+// export const useProducts = (): { products: BankProduct[] } => {
+//     const [products, setProducts] = useState<BankProduct[]>([]);
+//     return { products };
+// };
+
+// tipi complessi
+// type UseProductsReturnType = {
+//     products: BankProduct[];
+//     isLoading: boolean;
+//     error: string | null;
+//     refresh: () => void;
+// };
+
+// export const useProducts = (): UseProductsReturnType => {
+//     const [products, setProducts] = useState<BankProduct[]>([]);
+//     const [isLoading, setIsLoading] = useState(false);
+//     const [error, setError] = useState<string | null>(null);
+
+//     const refresh = () => { /* ... */ };
+
+//     return { products, isLoading, error, refresh }; // Ora il tipo separato è utile
+// };

@@ -1,8 +1,9 @@
 import { BankProduct } from "../types.ts"
+import BankCard from "./BankCard.tsx"
 
 //prop di questo component e bankaccount
 type Props = {
-  bankAccounts: BankProduct[]
+  bankAccounts: BankProduct[] //bankAccount e la aprop
 }
 
 
@@ -16,7 +17,11 @@ export const AccountList = ({ bankAccounts }: Props) => {
       <ul>
         {
           bankAccounts.map((account, index) => (
-            <li key={index}>{account.title}</li>
+            // <li key={index}>{account.title}</li>
+         <BankCard
+         key={index}
+         title={account.title}
+        />
           ))
         }
       </ul>

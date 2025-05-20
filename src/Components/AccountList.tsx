@@ -20,6 +20,7 @@ export const AccountList = ({ bankAccounts }: Props) => {
             // <li key={index}>{account.title}</li>
          <BankCard
          key={index}
+         id ={account.id}
          title={account.title}
         />
           ))

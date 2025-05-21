@@ -1,12 +1,16 @@
 
 type ButtonProps = {
-    text: string
+   id:number;
+    text: string;
+    onAdd: ()=> {}
 }
 
-const Button = ({text}:ButtonProps) => {
+const Button = ({id,text,onAdd}:ButtonProps) => {
+
+  
   return (
     <div>
-        <button>
+        <button onClick={()=>onAdd(id)}>
             {text}
         </button>
     </div>

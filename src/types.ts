@@ -7,3 +7,9 @@ export type BankProduct = {
     rate: number;
     durationInYears: number;
 }
+
+export type ItemToCompare = {
+ id: number,
+ title: string,
+  rate: number
+}

@@ -1,8 +1,22 @@
-import React from 'react'
+import { ItemToCompare } from "../types"
 
-const Comparator = () => {
+type ComparatorProps = {
+  itemsToCompare: ItemToCompare[];
+}
+
+
+const Comparator = ({ itemsToCompare }: ComparatorProps) => {
+
+  console.log("check if array is empty",itemsToCompare)
   return (
-    <div>Comparator</div>
+    <div>
+      <div>Comparator</div>
+      <ul>
+        {itemsToCompare.map((item, index) => (
+          <li key={index}>{item.title}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

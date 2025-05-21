@@ -3,14 +3,11 @@ import BankCard from "./BankCard.tsx"
 
 //prop di questo component e bankaccount
 type Props = {
-  bankAccounts: BankProduct[] //bankAccount e la aprop
+  bankAccounts: BankProduct[], //bankAccount e la aprop
+  onAdd: (id: number) => void
 }
 
-
-
-
-export const AccountList = ({ bankAccounts }: Props) => {
-
+export const AccountList = ({ bankAccounts, onAdd }: Props) => {
 
   return (
     <div>
@@ -22,6 +19,8 @@ export const AccountList = ({ bankAccounts }: Props) => {
          key={index}
          id ={account.id}
          title={account.title}
+        onAdd={onAdd}
+        
         />
           ))
         }

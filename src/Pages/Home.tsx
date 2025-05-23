@@ -1,9 +1,10 @@
 import { useProducts } from "../CustomHooks/useProducts"
 import { AccountList } from "../Components/AccountList"
-import { Input } from "../Components/Input"
+import SearchBar from "../Components/SearchBar"
 import { useEffect, useState } from "react"
 import Comparator from "../Components/Comparator"
 import { ItemToCompare } from "../types"
+
 
 
 // type ItemToCompare = {
@@ -34,16 +35,21 @@ const Home = () => {
     console.log("itemsToCompare:", itemsToCompare)
     console.log("itemToCompare:", itemToCompare)
     setItemsToCompare(prev => [...prev, itemToCompare])
-    console.log("check array",itemsToCompare)
+    console.log("check array", itemsToCompare)
   }
 
+  const handleChangeText = (searchValue:string) => {
+    console.log("stringa ricevuta da input",searchValue)
+  }
 
   //products contiene i dati presi da useProducts()
   return (
     <div className="container">
       <h2>Search for the right bank product</h2>
       <section className="accountList">
-        <Input />
+        <SearchBar
+          onChangeText={handleChangeText} />
+
         <AccountList
           //Stai solo passando il valore di products alla prop bankAccounts.
           //bankAccounts e products hanno stesso tipo BankProducts[]
@@ -53,7 +59,7 @@ const Home = () => {
       </section>
       <section className="comparator">
         <Comparator
-        bankProductsToCompare={itemsToCompare}/>
+          bankProductsToCompare={itemsToCompare} />
       </section>
     </div>
   )

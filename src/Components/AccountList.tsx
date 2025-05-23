@@ -4,7 +4,7 @@ import BankCard from "./BankCard.tsx"
 //prop di questo component e bankaccount
 type Props = {
   bankAccounts: BankProduct[], //bankAccount e la aprop
-  onAdd: (id: number) => void
+  onAdd:  (id: number) => void
 }
 
 export const AccountList = ({ bankAccounts, onAdd }: Props) => {

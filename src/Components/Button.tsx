@@ -2,8 +2,8 @@
 type ButtonProps = {
    id:number;
     text: string;
-    onAdd: ()=> {}
-}
+  onAdd: (id: number) => void
+  }
 
 const Button = ({id,text,onAdd}:ButtonProps) => {
 

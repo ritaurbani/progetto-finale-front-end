@@ -27,16 +27,16 @@ const Home = () => {
     console.log("recupero id", result)
     // setItemsToCompare(result)
     const itemToCompare = {
-      id: result.id,
-      title: result.title,
-      rate: result.rate
+      id: result.bankproduct.id,
+      title: result.bankproduct.title,
+      rate: result.bankproduct.rate
     }
-    setItemsToCompare([...itemsToCompare, itemToCompare])
+    console.log("itemsToCompare:", itemsToCompare)
+    console.log("itemToCompare:", itemToCompare)
+    setItemsToCompare(prev => [...prev, itemToCompare])
+    console.log("check array",itemsToCompare)
   }
 
-  useEffect(() => {
-    addToComparator(1)
-  }, [])
 
   //products contiene i dati presi da useProducts()
   return (
@@ -53,7 +53,7 @@ const Home = () => {
       </section>
       <section className="comparator">
         <Comparator
-        itemsToCompare={itemsToCompare}/>
+        bankProductsToCompare={itemsToCompare}/>
       </section>
     </div>
   )

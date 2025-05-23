@@ -1,19 +1,23 @@
 import { ItemToCompare } from "../types"
 
 type ComparatorProps = {
-  itemsToCompare: ItemToCompare[];
+  bankProductsToCompare: ItemToCompare[];
 }
 
 
-const Comparator = ({ itemsToCompare }: ComparatorProps) => {
+const Comparator = ({ bankProductsToCompare }: ComparatorProps) => {
 
-  console.log("check if array is empty",itemsToCompare)
+  const sortedBankProducts = bankProductsToCompare.sort((a,b) => {
+   return b.rate - a.rate
+  })
+
+  console.log("check if array is empty", bankProductsToCompare)
   return (
     <div>
       <div>Comparator</div>
       <ul>
-        {itemsToCompare.map((item, index) => (
-          <li key={index}>{item.title}</li>
+        {sortedBankProducts.map((item, index) => (
+          <li key={index}>{item.title}: {item.rate}</li>
         ))}
       </ul>
     </div>

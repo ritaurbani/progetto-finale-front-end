@@ -17,6 +17,7 @@ const BankCard = ({title,id, onAdd}:BankCardProps) => {
           <h3><Link to={`bankproducts/${id}`}>{title}</Link></h3> 
         {/* <img src="" alt="" />  */}
         <Button
+        id={id}
         text="Compare"
         onAdd={onAdd}/>
     </div>

@@ -20,8 +20,8 @@ const Home = () => {
   const { isLoading, error, products } = useProducts()
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
-
-  const[filteredProducts, setFilteredProducts] = useState([])
+  //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare
+  const[filteredProducts, setFilteredProducts] = useState(products)
 
   const addToComparator = async (id: number) => {
     console.log("inizio funzione")
@@ -40,14 +40,28 @@ const Home = () => {
     console.log("check array", itemsToCompare)
   }
 
+// 2. Sincronizza filteredProducts con products
+//senza useEffect Non c'è un meccanismo che aggiorna filteredProducts quando products cambia
+//Quando products cambia?
+//products da vuoto viene popolato con chiamata API
+// Aggiungi un nuovo prodotto
+// Modifichi un prodotto esistente
+// Elimini un prodotto
+// Pensa a useEffect come a un "ascoltatore" che dice:
+// "Hey React, ogni volta che products cambia, copia il suo valore in filteredProducts!"
+  useEffect(() => {
+    setFilteredProducts(products)
+  },[products])
+
+  //Azione quando l utente cerca? filtra
   const handleChangeText = (searchValue:string) => {
     console.log("stringa ricevuta da input",searchValue)
+
     const filteredProducts = products.filter((product) => {
-      product.title.toLowerCase().includes(searchValue.toLowerCase())    
-      setFilteredProducts(filteredProducts)
-    })
-    return filteredProducts
-  }
+    return product.title.toLowerCase().includes(searchValue.toLowerCase())
+  })
+   setFilteredProducts(filteredProducts) 
+}
 
 
   //products contiene i dati presi da useProducts()
@@ -63,7 +77,6 @@ const Home = () => {
           //bankAccounts e products hanno stesso tipo BankProducts[]
           bankAccounts={filteredProducts} //"products" del genitore → "bankAccounts" del figlio
           onAdd={addToComparator}
-        
         />
       </section>
       <section className="comparator">

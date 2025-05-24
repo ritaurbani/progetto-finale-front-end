@@ -9,11 +9,15 @@ type Props = {
 
 export const AccountList = ({ bankAccounts, onAdd }: Props) => {
 
+  const sortedBankProducts = bankAccounts.sort((a,b) => {
+    return a.title.localeCompare(b.title)
+  })
+  
   return (
     <div>
       <ul>
         {
-          bankAccounts.map((account, index) => (
+          sortedBankProducts.map((account, index) => (
             // <li key={index}>{account.title}</li>
          <BankCard
          key={index}

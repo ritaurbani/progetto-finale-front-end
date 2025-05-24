@@ -21,6 +21,8 @@ const Home = () => {
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
 
+  const[filteredProducts, setFilteredProducts] = useState([])
+
   const addToComparator = async (id: number) => {
     console.log("inizio funzione")
     const response = await fetch(`${API_URL}/bankproducts/${id}`)
@@ -40,7 +42,13 @@ const Home = () => {
 
   const handleChangeText = (searchValue:string) => {
     console.log("stringa ricevuta da input",searchValue)
+    const filteredProducts = products.filter((product) => {
+      product.title.toLowerCase().includes(searchValue.toLowerCase())    
+      setFilteredProducts(filteredProducts)
+    })
+    return filteredProducts
   }
+
 
   //products contiene i dati presi da useProducts()
   return (
@@ -53,8 +61,9 @@ const Home = () => {
         <AccountList
           //Stai solo passando il valore di products alla prop bankAccounts.
           //bankAccounts e products hanno stesso tipo BankProducts[]
-          bankAccounts={products} //"products" del genitore → "bankAccounts" del figlio
+          bankAccounts={filteredProducts} //"products" del genitore → "bankAccounts" del figlio
           onAdd={addToComparator}
+        
         />
       </section>
       <section className="comparator">

@@ -58,8 +58,10 @@ const Home = () => {
     console.log("stringa ricevuta da input",searchValue)
 
     const filteredProducts = products.filter((product) => {
-    return product.title.toLowerCase().includes(searchValue.toLowerCase())
+    return product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+    product.category.toLowerCase().includes(searchValue.toLowerCase()) 
   })
+
    setFilteredProducts(filteredProducts) 
 }
 

@@ -10,7 +10,7 @@ const Button = ({id,text,onAdd}:ButtonProps) => {
   
   return (
     <div>
-        <button onClick={()=>onAdd(id)}>
+        <button className="bankCardBtn" onClick={()=>onAdd(id)}>
             {text}
         </button>
     </div>

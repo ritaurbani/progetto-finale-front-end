@@ -23,6 +23,7 @@ const Home = () => {
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
   //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare
   const [filteredProducts, setFilteredProducts] = useState(products)
+  
 
   const addToComparator = async (id: number) => {
     console.log("inizio funzione")
@@ -38,6 +39,9 @@ const Home = () => {
     console.log("itemsToCompare:", itemsToCompare)
     console.log("itemToCompare:", itemToCompare)
     setItemsToCompare(prev => [...prev, itemToCompare])
+    setFilteredProducts(prev => prev.map((product, index) => {
+      
+    }))
     console.log("check array", itemsToCompare)
   }
 

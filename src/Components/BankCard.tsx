@@ -1,4 +1,4 @@
-import Button from "./Button"
+// import Button from "./Button"
 import { Link } from "react-router-dom"
 
 
@@ -20,11 +20,10 @@ const BankCard = ({ title, id, onAdd, onRemove }: BankCardProps) => {
       </div>
       <div className="bankCardContent">
         <h3 className="bankCardTitle"><Link to={`bankproducts/${id}`}>{title}</Link></h3>
-        <Button
-          id={id}
-          text="Compare"
-          onAdd={onAdd}
-          onRemove={onRemove} />
+        <div>
+          <button className="bankCardBtnAdd" onClick={() => onAdd(id)}> Compare </button>
+          <button className="bankCardBtnRemove" onClick={() => onRemove(id)}> Remove </button>
+        </div>
       </div>
     </div>
   )

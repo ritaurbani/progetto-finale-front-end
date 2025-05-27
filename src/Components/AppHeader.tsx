@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+// import logo from "/img/bank.jpg"
 
 function AppHeader() {
 
@@ -19,9 +20,14 @@ function AppHeader() {
     return (
         <>
             <nav className="navBar">
-                <div>
-                    <h3 className="logo">Rate</h3>
-                    <h3 className="logo">Compare</h3>
+                <div className="logoContent">
+                    <div>
+                        <img src="/img/bank.jpg" alt="Logo" width="100" height="100" className="d-inline-block " />
+                    </div>
+                    <div>
+                        <h3 className="logo">Rate</h3>
+                        <h3 className="logo">Compare</h3>
+                    </div>
                 </div>
                 <ul>
                     {
@@ -33,7 +39,7 @@ function AppHeader() {
                     }
 
                 </ul>
-            </nav>
+            </nav >
         </>
     )
 }

@@ -14,6 +14,11 @@ body{
     font-size: large;
 }
 
+.logoContent{
+   display: flex;
+   align-items: center;
+}
+
 .navBar {
     display: flex; 
     justify-content:space-between ;

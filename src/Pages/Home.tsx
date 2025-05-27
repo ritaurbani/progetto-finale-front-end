@@ -79,7 +79,7 @@ const Home = () => {
   //products contiene i dati presi da useProducts()
   return (
     <div className="container">
-      <h2>Search for the right bank product</h2>
+      <h2>Search for the lowest rate</h2>
       <SearchBar
         onChangeText={handleChangeText}
         handleSearch={handleSearch}

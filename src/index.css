@@ -4,12 +4,24 @@
     box-sizing: border-box; 
 }
 
+body{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logo{
+    color: #BADEDE;
+    margin-left: 20px;
+    font-size: large;
+}
+
 .navBar {
     display: flex; 
+    justify-content:space-between ;
     align-items: center;
-    background-color: chocolate;
+    background-color: #55394D    ;
     margin-bottom: 20px;
-    min-height: 50px; 
+    min-height: 70px; 
+    
 }
 
 .navBar ul {
@@ -24,6 +36,7 @@
 .navBar a {
     color: white;
     text-decoration: none;
+    margin-right: 50px;
 }
 .navBar a:hover {
     transform: scale(1.05);
@@ -50,6 +63,11 @@ input {
     padding: 8px;    
 }
 
+.card:hover {
+    outline: none;
+    border-color: #BADEDE;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2); }
+
 .bankCardContent{
     display: flex;
     justify-content: space-between;
@@ -57,7 +75,7 @@ input {
 
 .bankCardTitle a{
     text-decoration: none;
-    color:darkslateblue;
+    color:#55394D;
     transform: scale(1.05);
 }
 
@@ -82,7 +100,7 @@ input {
     margin-top: 20px;
     padding: 10px;
     background-color: #837CBA    ;
-    border-color: #97497C;
+    border-color: #837CBA;
     color: white;
     border-radius: 5px;
     cursor: pointer;

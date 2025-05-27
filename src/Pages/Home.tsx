@@ -1,7 +1,7 @@
 import { useProducts } from "../CustomHooks/useProducts"
 import { AccountList } from "../Components/AccountList"
 import SearchBar from "../Components/SearchBar"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import Comparator from "../Components/Comparator"
 import { ItemToCompare } from "../types"
 
@@ -17,7 +17,8 @@ const Home = () => {
 
   const API_URL = "http://localhost:3001"
 
-  const { isLoading, error, products } = useProducts()
+  const { isLoading, error, products, fetchProducts } = useProducts()
+
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
   //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare
@@ -40,6 +41,11 @@ const Home = () => {
     console.log("check array", itemsToCompare)
   }
 
+  const removeComparator = (id: number) => {
+    //teniamo i prodotti che non hanno il nome uguale a quello del item.name passato
+    setItemsToCompare(curr  => curr.filter((item) => item.id !== id))      
+  }
+
   // 2. Sincronizza filteredProducts con products
   //senza useEffect Non c'è un meccanismo che aggiorna filteredProducts quando products cambia
   //Quando products cambia?
@@ -53,25 +59,31 @@ const Home = () => {
     setFilteredProducts(products)
   }, [products])
 
+
+
   //Azione quando l utente cerca? filtra
   const handleChangeText = (searchValue: string) => {
     console.log("stringa ricevuta da input", searchValue)
 
     const filteredProducts = products.filter((product) => {
-      return product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchValue.toLowerCase())
+      return product.category.toLowerCase().includes(searchValue.toLowerCase()) ||
+      product.title.toLowerCase().includes(searchValue.toLowerCase())
     })
 
     setFilteredProducts(filteredProducts)
   }
 
-
+  const handleSearch = () => {
+   
+  }
   //products contiene i dati presi da useProducts()
   return (
     <div className="container">
       <h2>Search for the right bank product</h2>
       <SearchBar
-        onChangeText={handleChangeText} />
+        onChangeText={handleChangeText}
+        handleSearch={handleSearch}
+        />
 
       <div className="comparisonLayout">
         <section className="accountList">
@@ -80,6 +92,7 @@ const Home = () => {
             //bankAccounts e products hanno stesso tipo BankProducts[]
             bankAccounts={filteredProducts} //"products" del genitore → "bankAccounts" del figlio
             onAdd={addToComparator}
+            onRemove={removeComparator}
           />
         </section>
         <section className="comparator">

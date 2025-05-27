@@ -6,11 +6,12 @@ type BankCardProps = {
   title: string,
   id: number,
   onAdd: (id: number) => void
+  onRemove: (id: number) => void
 
 }
 
 
-const BankCard = ({ title, id, onAdd }: BankCardProps) => {
+const BankCard = ({ title, id, onAdd, onRemove }: BankCardProps) => {
 
   return (
     <div className="card">
@@ -22,7 +23,8 @@ const BankCard = ({ title, id, onAdd }: BankCardProps) => {
         <Button
           id={id}
           text="Compare"
-          onAdd={onAdd} />
+          onAdd={onAdd}
+          onRemove={onRemove} />
       </div>
     </div>
   )

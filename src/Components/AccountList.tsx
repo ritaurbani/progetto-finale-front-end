@@ -4,10 +4,11 @@ import BankCard from "./BankCard.tsx"
 //prop di questo component e bankaccount
 type Props = {
   bankAccounts: BankProduct[], //bankAccount e la aprop
-  onAdd:  (id: number) => void
+  onAdd:  (id: number) => void,
+  onRemove: (id:number)=> void,
 }
 
-export const AccountList = ({ bankAccounts, onAdd }: Props) => {
+export const AccountList = ({ bankAccounts, onAdd, onRemove }: Props) => {
 
   const sortedBankProducts = bankAccounts.sort((a,b) => {
     return a.title.localeCompare(b.title)
@@ -24,6 +25,7 @@ export const AccountList = ({ bankAccounts, onAdd }: Props) => {
          id ={account.id}
          title={account.title}
         onAdd={onAdd}
+        onRemove={onRemove}
         
         />
           ))

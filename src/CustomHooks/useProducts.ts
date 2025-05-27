@@ -6,7 +6,8 @@ import { BankProduct } from '../types'
 type UseProductsReturnType = {
     isLoading: boolean,
     error: string | null,
-    products: BankProduct[]
+    products: BankProduct[],
+    fetchProducts: ()=>void
 }
 
 const API_URL = "http://localhost:3001"
@@ -47,7 +48,7 @@ export const useProducts = (): UseProductsReturnType => {
 
     //oggetto piu flessibili quando ci sono più valori da ritornare (es. dati, loading, errori).
     //se ritorno array poi devo ricordare ordine elems
-    return {products: bankProducts, isLoading, error }
+    return { products: bankProducts, isLoading, error, fetchProducts  }
     //products → Nome della proprietà nell'oggetto ritornato (quello che vedrà chi usa il hook).
     // bankProducts → Variabile interna al hook.
     // Se hai definito un tipo per il ritorno del hook(es.UseProductsReturnType), devi assicurarti che i nomi delle proprietà coincidano:

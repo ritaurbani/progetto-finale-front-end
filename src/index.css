@@ -42,11 +42,17 @@ input {
 }
 
 .card {
-    max-width: 40%;
+    /* 100 of ul */
+    max-width: 100%; 
     border: 0.5px solid grey;
     margin-bottom: 10px;
     border-radius: 5px;
-    padding: 8px;  
+    padding: 8px;    
+}
+
+.bankCardContent{
+    display: flex;
+    justify-content: space-between;
 }
 
 .bankCardTitle a{
@@ -59,11 +65,24 @@ input {
     transform: scale(1.02);
 }
 
-.bankCardBtn {
+.bankCardBtnAdd {
     margin-top: 20px;
     padding: 10px;
     background-color: #4AA082;
     border-color: #4AA082;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border:none;
+    transition: transform 0.3s ease;
+    margin-right: 5px;
+}
+
+.bankCardBtnRemove {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #837CBA    ;
+    border-color: #97497C;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -81,11 +100,16 @@ input {
 .comparisonLayout{
     display: flex;
     justify-content: space-between;
+    gap: 60px;
+
+}
+.comparisonLayout > *{
+    flex-basis: 100%;
 
 }
 
 .accountList{
-    flex-grow: 2;
+    flex-grow: 3;
 }
 
 .comparator{

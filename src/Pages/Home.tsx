@@ -3,7 +3,8 @@ import { AccountList } from "../Components/AccountList"
 import SearchBar from "../Components/SearchBar"
 import { useEffect, useState, useCallback } from "react"
 import Comparator from "../Components/Comparator"
-import { ItemToCompare } from "../types"
+import { ItemToCompare, BankProduct } from "../types"
+
 
 
 
@@ -22,7 +23,7 @@ const Home = () => {
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
   //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare
-  const [filteredProducts, setFilteredProducts] = useState(products)
+  const [filteredProducts, setFilteredProducts] = useState<BankProduct[]>(products)
   
 
   const addToComparator = async (id: number) => {
@@ -38,16 +39,25 @@ const Home = () => {
     }
     console.log("itemsToCompare:", itemsToCompare)
     console.log("itemToCompare:", itemToCompare)
-    setItemsToCompare(prev => [...prev, itemToCompare])
-    setFilteredProducts(prev => prev.map((product, index) => {
-      
-    }))
+    setItemsToCompare(curr => [...curr, itemToCompare])
+    setFilteredProducts(curr => curr.map((product) => 
+      product.id === id ? {...product, canRemove: true}
+      : product
+    ))
+    console.log(filteredProducts)
     console.log("check array", itemsToCompare)
   }
+  console.log(filteredProducts)
+
 
   const removeComparator = (id: number) => {
     //teniamo i prodotti che non hanno il nome uguale a quello del item.name passato
-    setItemsToCompare(curr  => curr.filter((item) => item.id !== id))      
+    setItemsToCompare(curr  => curr.filter((item) => item.id !== id))  
+    setFilteredProducts(curr => curr.map(product => 
+      product.id === id ? {...product, canRemove:false}
+      :
+      product
+    ))    
   }
 
   // 2. Sincronizza filteredProducts con products
@@ -77,16 +87,13 @@ const Home = () => {
     setFilteredProducts(filteredProducts)
   }
 
-  const handleSearch = () => {
-   
-  }
+
   //products contiene i dati presi da useProducts()
   return (
     <div className="container">
       <h2>Search for the lowest rate</h2>
       <SearchBar
         onChangeText={handleChangeText}
-        handleSearch={handleSearch}
         />
 
       <div className="comparisonLayout">

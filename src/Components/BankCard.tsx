@@ -5,13 +5,13 @@ import { Link } from "react-router-dom"
 type BankCardProps = {
   title: string,
   id: number,
-  onAdd: (id: number) => void
-  onRemove: (id: number) => void
-
+  onAdd: (id: number) => void,
+  onRemove: (id: number) => void,
+  canRemove: boolean
 }
 
 
-const BankCard = ({ title, id, onAdd, onRemove }: BankCardProps) => {
+const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
 
   return (
     <div className="card">
@@ -21,8 +21,28 @@ const BankCard = ({ title, id, onAdd, onRemove }: BankCardProps) => {
       <div className="bankCardContent">
         <h3 className="bankCardTitle"><Link to={`bankproducts/${id}`}>{title}</Link></h3>
         <div>
-          <button className="bankCardBtnAdd" onClick={() => onAdd(id)}> Compare </button>
+          {/* <button className="bankCardBtnAdd" onClick={() => onAdd(id)}> Compare </button>
           <button className="bankCardBtnRemove" onClick={() => onRemove(id)}> Remove </button>
+         */}
+        
+          
+          {canRemove? (
+            <button 
+            className="bankCardBtnRemove"
+            onClick={()=> onRemove(id)}>
+              Remove
+            </button>
+          ) : (
+            <button 
+            className="bankCardBtnAdd"
+            onClick={()=> onAdd(id)}>
+              Compare
+            </button>
+          )
+          
+        
+        }
+
         </div>
       </div>
     </div>

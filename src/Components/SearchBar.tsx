@@ -6,13 +6,11 @@ import { useSearchParams } from "react-router-dom"
 //callback lui comunica  a home la ricerca
 type SearchBarPprops = {
   onChangeText: (value: string) => void,
-  handleSearch: () => void,
 }
-const SearchBar = ({ onChangeText, handleSearch}: SearchBarPprops) => {
+
+const SearchBar = ({ onChangeText}: SearchBarPprops) => {
 
   const [searchValue, setSearchValue] = useState("")
-
-  const [searchParams, setSearchParams] = useSearchParams()
 
 
   // const handleSearch = ()=> {
@@ -32,7 +30,6 @@ const SearchBar = ({ onChangeText, handleSearch}: SearchBarPprops) => {
           onChangeText(e.target.value)
         }
         } />
-        <button onClick={handleSearch}>Search</button>
     </div>
   )
 }

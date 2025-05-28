@@ -26,6 +26,7 @@ export const AccountList = ({ bankAccounts, onAdd, onRemove }: Props) => {
          title={account.title}
         onAdd={onAdd}
         onRemove={onRemove}
+        canRemove={account.canRemove || false}
         
         />
           ))

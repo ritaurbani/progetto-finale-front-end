@@ -6,6 +6,7 @@ export type BankProduct = {
     description: string;
     rate: number;
     durationInYears: number;
+    canRemove?:boolean
 }
 
 export type ItemToCompare = {

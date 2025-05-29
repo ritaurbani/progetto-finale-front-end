@@ -19,7 +19,8 @@ const SearchBar = ({ onChangeText}: SearchBarPprops) => {
   // }
 
   return (
-    <div><label htmlFor=""></label>
+    <>
+      <label htmlFor=""></label>
       <input
         type="text"
         placeholder="search for a product"
@@ -30,7 +31,7 @@ const SearchBar = ({ onChangeText}: SearchBarPprops) => {
           onChangeText(e.target.value)
         }
         } />
-    </div>
+    </>
   )
 }
 

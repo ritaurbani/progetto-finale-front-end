@@ -4,6 +4,7 @@ import SearchBar from "../Components/SearchBar"
 import { useEffect, useState, useCallback } from "react"
 import Comparator from "../Components/Comparator"
 import { ItemToCompare, BankProduct } from "../types"
+import TitleComparator from "../Components/TitleComparator"
 
 
 
@@ -19,12 +20,12 @@ const Home = () => {
   const API_URL = "http://localhost:3001"
 
   const { isLoading, error, products, fetchProducts } = useProducts()
-
+  const [show, setShow] = useState<boolean>(false)
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
   //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare
   const [filteredProducts, setFilteredProducts] = useState<BankProduct[]>(products)
-  
+
 
   const addToComparator = async (id: number) => {
     console.log("inizio funzione")
@@ -40,25 +41,27 @@ const Home = () => {
     console.log("itemsToCompare:", itemsToCompare)
     console.log("itemToCompare:", itemToCompare)
     setItemsToCompare(curr => [...curr, itemToCompare])
-    setFilteredProducts(curr => curr.map((product) => 
-      product.id === id ? {...product, canRemove: true}
-      : product
+    setFilteredProducts(curr => curr.map((product) =>
+      product.id === id ? { ...product, canRemove: true }
+        : product
     ))
     console.log(filteredProducts)
     console.log("check array", itemsToCompare)
+    // setShow(true)
   }
   console.log(filteredProducts)
 
 
   const removeComparator = (id: number) => {
     //teniamo i prodotti che non hanno il nome uguale a quello del item.name passato
-    setItemsToCompare(curr  => curr.filter((item) => item.id !== id))  
-    setFilteredProducts(curr => curr.map(product => 
-      product.id === id ? {...product, canRemove:false}
-      :
-      product
-    ))    
+    setItemsToCompare(curr => curr.filter((item) => item.id !== id))
+    setFilteredProducts(curr => curr.map(product =>
+      product.id === id ? { ...product, canRemove: false }
+        :
+        product
+    ))
   }
+
 
   // 2. Sincronizza filteredProducts con products
   //senza useEffect Non c'è un meccanismo che aggiorna filteredProducts quando products cambia
@@ -81,20 +84,26 @@ const Home = () => {
 
     const filteredProducts = products.filter((product) => {
       return product.category.toLowerCase().includes(searchValue.toLowerCase()) ||
-      product.title.toLowerCase().includes(searchValue.toLowerCase())
+        product.title.toLowerCase().includes(searchValue.toLowerCase())
     })
 
     setFilteredProducts(filteredProducts)
   }
 
-
   //products contiene i dati presi da useProducts()
   return (
     <div className="container">
       <h2>Search for the lowest rate</h2>
-      <SearchBar
-        onChangeText={handleChangeText}
+      <div className="titles-sections"
+        style={{ display: "flex", alignItems: "center", justifyContent: "start", margin: "40px 0" }}>
+        <SearchBar
+          onChangeText={handleChangeText}
         />
+        {
+          itemsToCompare.length > 0 ?
+            <p><strong>Compare Intrest Rates</strong></p> : ""
+        }
+      </div>
 
       <div className="comparisonLayout">
         <section className="accountList">

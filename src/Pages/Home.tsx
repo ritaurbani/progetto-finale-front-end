@@ -4,10 +4,6 @@ import SearchBar from "../Components/SearchBar"
 import { useEffect, useState, useCallback } from "react"
 import Comparator from "../Components/Comparator"
 import { ItemToCompare, BankProduct } from "../types"
-import TitleComparator from "../Components/TitleComparator"
-
-
-
 
 // type ItemToCompare = {
 //   id: number,

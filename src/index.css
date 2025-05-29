@@ -187,3 +187,48 @@ input {
 .progress-rate{
     text-align: center;
 }
+
+.card-detailPage{
+    margin: 50px;
+    display: flex;
+    padding:20px;
+    /* 20px blur for a black that is 0.15% opache */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width:60%;
+    font-size: 20px;
+    font-weight: 300;
+    border-radius:8px ;
+    color: #333333;
+    background-color:#fafafa ;
+    transition:background 0.25s ;
+
+    /* font-family: "Inconsolata"; */
+}
+
+.card-detailPage:hover{
+    background-color: #ffffff;
+}
+
+.card-detailPageImg {
+    /* width: 80px;
+    border-radius: 50%; */
+    margin-right: 20px;
+}
+
+.card-detailPageText{
+    line-height: 3;
+}
+
+/* .card-detailPageText:last-child{
+margin-bottom: 0;} */
+
+.description{
+    line-height: 1.5;
+}
+
+.pageDetail-title{
+    margin-top: 0;    
+    font-weight: bold;
+    margin-bottom: 80px;
+
+}

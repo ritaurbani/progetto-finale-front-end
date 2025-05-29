@@ -30,13 +30,18 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <h2>ProductDetails</h2>
+      <h2 style={{margin: "50px"}}>Learn more about this product</h2>
       {singleProduct ?
-        <div>
-          <p><strong>Name : </strong>{singleProduct.title}</p>
-          <p><strong>Name : </strong>{singleProduct.description}</p>
-          <p><strong>Name : </strong>{singleProduct.rate}</p>
-          <p><strong>Name : </strong>{singleProduct.category}</p>
+        <div className="card-detailPage">
+          <div className="card-detailPageImg">
+            <img src="/img/bank.jpg" alt="" />
+          </div>
+          <div className="card-detailPageText">
+            <p className="pageDetail-title"><strong></strong>{singleProduct.title}</p>
+            <p className="description"><strong></strong>{singleProduct.description}</p>
+            <p style={{
+              fontWeight: "bold", color: "#DF591D"}}><strong>Rate offered : {singleProduct.rate}% </strong></p>
+          </div>
         </div>
         : <p>"no product found"</p>
       }

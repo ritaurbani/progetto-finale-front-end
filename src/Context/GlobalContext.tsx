@@ -1,26 +1,35 @@
-// import {createContext} from "react"
-// import { useProducts } from "../CustomHooks/useProducts"
+import { createContext, useState, useEffect } from "react";
+import { BankProduct } from "../types";
 
-// //creo contesto accessibile da altri componenti
 
-// type GlobalContextType = {
+type FavouriteContextType = BankProduct & {
 
-// }
+}
 
-// //Dobbiamo dire che cntenuto puo'assumere tramite un parametro di tipo
-// export const GlobalContext = createContext,<GlobalContextType | null>(null) 
 
-// type GlobalContextProviderProps = {
-//     children: React.ReactNode
-// }
-// //any children che inserisco all interno di questo componente
-// export function GlobalProvider({children}:GlobalContextProviderProps){
+export const GlobalContext = createContext() ;//creo contesto accessibile da altri componenti
 
-//     const resultsUseProducts = useProducts()
+export function GlobalProvider({children}) {//qualsiasi children che inserisco all interno di questo componente
 
-//     return (
-//         <GlobalContext.Provider value={{...resultsUseProducts}}>
-//             {children}
-//         </GlobalContext.Provider>
-//     )
-// }
+ const [favourites, setFavourites] = useState()
+
+ const addToFavourites = () => {
+    
+ }
+
+ const removeFromFavourites = () => {
+
+ }
+
+ const favouritesValues = {favourites, addToFavourites, removeFromFavourites}
+    // const globalProviderValue = { tasks }
+
+    return (
+        //value={globalProviderValue}
+        <GlobalContext.Provider value={{ favouritesValues }}>
+            {children}
+        </GlobalContext.Provider>
+    )
+}
+
+//const {posts} = useContext(GlobalContext)

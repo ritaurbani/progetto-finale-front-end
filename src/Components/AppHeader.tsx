@@ -10,11 +10,9 @@ function AppHeader() {
             title: "Home"
         },
         {
-            path: "/productsdetails",
-            title: "ProductDetails"
+            path: "/favourites",
+            title: "Favourites"
         }
-
-
     ]
 
     return (

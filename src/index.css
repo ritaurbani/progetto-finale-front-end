@@ -232,3 +232,8 @@ margin-bottom: 0;} */
     margin-bottom: 80px;
 
 }
+
+.title-heart{
+    display: flex;
+    gap: 20px;   
+}

@@ -16,7 +16,6 @@ const Home = () => {
   const API_URL = "http://localhost:3001"
 
   const { isLoading, error, products, fetchProducts } = useProducts()
-  const [show, setShow] = useState<boolean>(false)
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
   //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare

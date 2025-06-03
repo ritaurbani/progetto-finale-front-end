@@ -15,7 +15,7 @@ type BankCardProps = {
 
 const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
 
-  const { favourites, addToFavourites, removeFromFavourites } = useContext(GlobalContext)
+  const { favourites, addToFavourites, red, removeFromFavourites } = useContext(GlobalContext)
 
 
 
@@ -28,7 +28,15 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
       <div className="bankCardContent">
         <div className="title-heart">
           <h3 className="bankCardTitle"><Link to={`bankproducts/${id}`}>{title}</Link></h3>
-          <span onClick={addToFavourites}><i className="fa-regular fa-heart"></i></span>
+
+          {
+            red ? (
+              <span onClick={() => addToFavourites(title)}><i className="fa-regular fa-heart"></i></span>
+            ) : (
+                <span onClick={() => removeFromFavourites(title)}><i className="fa-regular fa-heart"></i></span>)
+
+          }
+
         </div>
         <div>
 

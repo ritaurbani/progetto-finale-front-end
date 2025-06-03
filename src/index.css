@@ -237,3 +237,8 @@ margin-bottom: 0;} */
     display: flex;
     gap: 20px;   
 }
+
+.fa-heart{
+    color: red;
+}
+

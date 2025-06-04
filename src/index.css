@@ -230,7 +230,6 @@ margin-bottom: 0;} */
     margin-top: 0;    
     font-weight: bold;
     margin-bottom: 80px;
-
 }
 
 .title-heart{
@@ -241,3 +240,19 @@ margin-bottom: 0;} */
 .is-favourite{
     color: red;
 }
+
+.favourites-card{
+    max-width: 30%;
+    border: 0.5px solid grey;
+    margin: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+}
+
+
+.favourites-card:hover {
+    outline: none;
+    border-color: #BADEDE;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+} 

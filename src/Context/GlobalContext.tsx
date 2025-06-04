@@ -35,7 +35,7 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {//q
     )
     }
 
-    const favouritesValues = { favourites, addToFavourites, removeFromFavourites }
+    const favouritesValues = { favourites, addToFavourites,setFavourites, removeFromFavourites }
     // const globalProviderValue = { tasks }
 
     return (

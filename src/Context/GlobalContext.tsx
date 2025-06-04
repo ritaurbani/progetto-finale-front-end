@@ -2,54 +2,45 @@ import { createContext, useState, useEffect } from "react";
 import { BankProduct } from "../types";
 import { useProducts } from "../CustomHooks/useProducts";
 
+type FavouriteItem = { id: number, title: string }
+
 type FavouriteContextType = {
-    favourites:BankProduct[];
-    addToFavourites: (title:string) => void;
-    removeFromFavourites: (title:string) => void;
-    red: boolean
+    favourites: FavouriteItem[];
+    addToFavourites: (newElement: FavouriteItem) => void;
+    removeFromFavourites: (id: number) => void;
 }
 
 
 export const GlobalContext = createContext<FavouriteContextType>({
 
     favourites: [],
-    addToFavourites: () => {},
-    removeFromFavourites: () => {},
-    red:false
+    addToFavourites: () => { },
+    removeFromFavourites: () => { },
 
-}) ;//creo contesto accessibile da altri componenti
+});//creo contesto accessibile da altri componenti
 
 export function GlobalProvider({ children }: { children: React.ReactNode }) {//qualsiasi children che inserisco all interno di questo componente
 
- const [favourites, setFavourites] = useState<BankProduct[]>([])
- const [red, setRed] =useState<boolean>(false)
+    const [favourites, setFavourites] = useState<FavouriteItem[]>([])
 
-    const products = useProducts();
+    // It should accept a { id: number, title: string } as function parameter and add it to the favourite list
+    const addToFavourites = (newItem: FavouriteItem) => {
+        // red should be handled iinside the BankCard by using the context
+        setFavourites([...favourites, newItem])
 
- const addToFavourites = (title:string) => {
-    setRed(true)
-    const favouriteItem = products.find((item:string) => item.title === title)
-    if(favourites.includes(favouriteItem)){
-        return favourites
     }
-    setFavourites([...favourites, favouriteItem])
 
- }
+    const removeFromFavourites = (id: number) => {
+        setFavourites(favourites.filter((item) => item.id !== id)
+    )
+    }
 
- const removeFromFavourites = (title:string) => {
-    setRed(false)
-    const newArray = products.filter((item) => item.title !== title)
-    setFavourites(newArray)
- }
-
-
-    
- const favouritesValues = {favourites, red, setRed, addToFavourites, removeFromFavourites}
+    const favouritesValues = { favourites, addToFavourites, removeFromFavourites }
     // const globalProviderValue = { tasks }
 
     return (
         //value={globalProviderValue}
-        <GlobalContext.Provider value={{...favouritesValues}}>
+        <GlobalContext.Provider value ={{ ...favouritesValues }}>
             {children}
         </GlobalContext.Provider>
     )

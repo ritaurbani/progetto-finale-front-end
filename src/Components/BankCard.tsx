@@ -14,11 +14,15 @@ type BankCardProps = {
 
 
 const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
-  const { favourites, addToFavourites, red, removeFromFavourites } = useContext(GlobalContext)
+  const { favourites, addToFavourites, removeFromFavourites } = useContext(GlobalContext)
   // define a constant isFavourite. It's true when favourites contains an element with the id in the props
   // false otherwise.
   // Use isFavourite boolean in the JSX part to show the red heart or not.
 
+  const foundFavourite = favourites.find((item) => item.id === id)
+  
+  const isFavourite = foundFavourite ? true : false; // Boolean(foundFavourite)
+  
 
   return (
     <div className="card">
@@ -30,10 +34,10 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
           <h3 className="bankCardTitle"><Link to={`bankproducts/${id}`}>{title}</Link></h3>
 
           {
-            red ? (
-              <span onClick={() => removeFromFavourites(title)}><i className="fa-regular fa-heart"></i></span>
+            isFavourite ? (
+              <span onClick={() => removeFromFavourites(id)}><i className="is-favourite fa-regular fa-heart"></i></span>
             ) : (
-                <span onClick={() => addToFavourites ({id, title})}><i className="is-favourite fa-regular fa-heart"></i></span>)
+                <span onClick={() => addToFavourites ({id, title})}><i className="fa-regular fa-heart"></i></span>)
 
           }
 

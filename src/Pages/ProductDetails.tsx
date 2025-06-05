@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { BankProduct } from "../types"
+import { useNavigate } from "react-router-dom"
 
 const ProductDetails = () => {
+
+  const navigate = useNavigate()
 
   const API_URL = "http://localhost:3001"
 
@@ -30,9 +33,9 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <h2 style={{margin: "50px"}}>Learn more about this product</h2>
+      <h2 style={{ margin: "50px" }}>Learn more about this product</h2>
       {singleProduct ?
-        <div className="card-detailPage">
+        (<div className="card-detailPage">
           <div className="card-detailPageImg">
             <img src="/img/bank.jpg" alt="" />
           </div>
@@ -40,12 +43,21 @@ const ProductDetails = () => {
             <p className="pageDetail-title"><strong></strong>{singleProduct.title}</p>
             <p className="description"><strong></strong>{singleProduct.description}</p>
             <p style={{
-              fontWeight: "bold", color: "#DF591D"}}><strong>Rate offered : {singleProduct.rate}% </strong></p>
+              fontWeight: "bold", color: "#DF591D"
+            }}><strong>Rate offered : {singleProduct.rate}% </strong></p>
           </div>
-        </div>
-        : <p>"no product found"</p>
+          <div>
+          </div>
+
+        </div>)
+
+        : (<p>"no product found"</p>)
+
       }
+      <button onClick={() => navigate(-1)} className="back-btn">Back</button>
+
     </div>
+
   )
 }
 

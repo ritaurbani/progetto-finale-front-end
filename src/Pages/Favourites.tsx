@@ -20,7 +20,7 @@ const Favourites = () => {
 
             ) : (favourites.map((item) => (
                 <div key={item.id} className="favourites-card">
-                    <h3> <Link to={`bankproducts/${item.id}`}>{item.title}</Link></h3>
+                    <h3 className="bankCardTitle"> <Link to={`bankproducts/${item.id}`}>{item.title}</Link></h3>
                     <span onClick={() => removeFromFavourites(item.id)}><strong>X</strong></span>
                 </div>
             ))

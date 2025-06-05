@@ -259,3 +259,9 @@ margin-bottom: 0;} */
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 } 
 
+.back-btn{
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fafafa;
+}

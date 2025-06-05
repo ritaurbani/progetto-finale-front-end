@@ -242,12 +242,14 @@ margin-bottom: 0;} */
 }
 
 .favourites-card{
-    max-width: 30%;
+    max-width: 40%;
     border: 0.5px solid grey;
     margin: 20px;
     border-radius: 5px;
     padding: 10px;
     display: flex;
+    justify-content: space-between;
+   
 }
 
 
@@ -256,3 +258,4 @@ margin-bottom: 0;} */
     border-color: #BADEDE;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 } 
+

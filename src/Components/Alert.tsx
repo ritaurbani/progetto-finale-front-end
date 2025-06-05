@@ -1,12 +1,22 @@
 
-const Alert = ({text:string}) => {
+type AlertProps = {
+    text: string;
+    show: boolean;
+    
+}
+
+const Alert = ({ text, show }: AlertProps) => {
 
 
-  return (
-    <div>
-        <p>{text}</p>
-    </div>
-  )
+    return (
+
+        show && (
+            <div style={{ border: "1px solid black", padding: "20px", borderRadius: "10px",backgroundColor:"green", color: "white", fontSize:"small", }}>
+                {text}
+            </div>
+        )
+
+    )
 }
 
 export default Alert

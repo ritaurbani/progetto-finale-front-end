@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom"
 import { useState, useContext } from "react"
 import { GlobalContext } from "../Context/GlobalContext"
+import Alert from "./Alert"
 
 
 type BankCardProps = {
@@ -23,7 +24,11 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
 
   const isFavourite = foundFavourite ? true : false; // Boolean(foundFavourite)
 
+  const [show, setShow] = useState(false)
 
+  setTimeout(() => {
+    setShow(false)
+  }, 1500)
 
 
   return (
@@ -43,10 +48,15 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
               <span onClick={() => {
 
                 addToFavourites({ id, title })
+                setShow(true)
 
               }}><i className="fa-regular fa-heart"></i></span>)
 
           }
+          <Alert
+          text="Added to Favourites"
+          show={show}
+          />
 
         </div>
         <div>

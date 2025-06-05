@@ -1,6 +1,6 @@
 // import Button from "./Button"
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useState, useContext } from "react"
 import { GlobalContext } from "../Context/GlobalContext"
 
 
@@ -20,9 +20,11 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
   // Use isFavourite boolean in the JSX part to show the red heart or not.
 
   const foundFavourite = favourites.find((item) => item.id === id)
-  
+
   const isFavourite = foundFavourite ? true : false; // Boolean(foundFavourite)
-  
+
+
+
 
   return (
     <div className="card">
@@ -36,8 +38,13 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
           {
             isFavourite ? (
               <span onClick={() => removeFromFavourites(id)}><i className="is-favourite fa-regular fa-heart"></i></span>
+
             ) : (
-                <span onClick={() => addToFavourites ({id, title})}><i className="fa-regular fa-heart"></i></span>)
+              <span onClick={() => {
+
+                addToFavourites({ id, title })
+
+              }}><i className="fa-regular fa-heart"></i></span>)
 
           }
 

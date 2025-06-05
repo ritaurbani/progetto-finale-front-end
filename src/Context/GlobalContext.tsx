@@ -23,11 +23,17 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {//q
 
     const [favourites, setFavourites] = useState<FavouriteItem[]>([])
 
+    const [showAlert, setShowAlert] = useState(false)
+
+
+
+   
+
     // It should accept a { id: number, title: string } as function parameter and add it to the favourite list
     const addToFavourites = (newItem: FavouriteItem) => {
         // red should be handled iinside the BankCard by using the context
         setFavourites([...favourites, newItem])
-
+        showAlert ? "added" : "not added"
     }
 
     const removeFromFavourites = (id: number) => {
@@ -35,7 +41,7 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {//q
     )
     }
 
-    const favouritesValues = { favourites, addToFavourites,setFavourites, removeFromFavourites }
+    const favouritesValues = { favourites, addToFavourites,setFavourites, removeFromFavourites, setShowAlert }
     // const globalProviderValue = { tasks }
 
     return (

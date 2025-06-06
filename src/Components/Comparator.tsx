@@ -9,7 +9,7 @@ type ComparatorProps = {
 const Comparator = ({ bankProductsToCompare }: ComparatorProps) => {
 
   const sortedBankProducts = bankProductsToCompare.sort((a, b) => {
-    return b.rate - a.rate
+    return a.rate - b.rate
   })
 
   console.log("check if array is empty", bankProductsToCompare)

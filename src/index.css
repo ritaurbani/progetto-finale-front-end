@@ -150,6 +150,10 @@ input {
     margin-top: 15px;
 }
 
+.list-compared{
+    list-style: none;
+}
+
 .barComparison{
     display: flex;
 }
@@ -260,7 +264,7 @@ margin-bottom: 0;} */
 } 
 
 .back-btn{
-    margin-left: 20px;
+    margin: 20px;
     padding: 10px;
     border-radius: 5px;
     background-color: #fafafa;

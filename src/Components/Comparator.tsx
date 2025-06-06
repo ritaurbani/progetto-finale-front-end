@@ -16,10 +16,10 @@ const Comparator = ({ bankProductsToCompare }: ComparatorProps) => {
   return (
     <div className="barComparison">
 
-      <ul>
+      <ul className="list-compared">
         {sortedBankProducts.map((item, index) => (
-          <div>
-            <li key={index}>{item.title}: {item.rate}</li>
+          <div style={{display: "flex"}}>
+            <li key={index}>{item.title}:</li>
             <ProgressBar
             rate={item.rate}
             />

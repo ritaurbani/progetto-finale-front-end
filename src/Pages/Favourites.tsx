@@ -3,8 +3,11 @@ import { useContext } from "react"
 import { GlobalContext } from "../Context/GlobalContext"
 import BankCard from "../Components/BankCard"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Favourites = () => {
+
+    const navigate = useNavigate()
 
     const { favourites, removeFromFavourites } = useContext(GlobalContext)
 
@@ -22,10 +25,12 @@ const Favourites = () => {
                 <div key={item.id} className="favourites-card">
                     <h3 className="bankCardTitle"> <Link to={`bankproducts/${item.id}`}>{item.title}</Link></h3>
                     <span onClick={() => removeFromFavourites(item.id)}><strong>X</strong></span>
-                </div>
+                </div>                
             ))
             )
             }
+            <button className="back-btn"  onClick={() => navigate(-1)}>Back</button>
+
         </div>
     )
 }

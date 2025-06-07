@@ -11,8 +11,10 @@ export const ProgressBar = ({rate}:ProgressBarProp) => {
     const colorChange = (rate:number) => {
         if(rate < 4 ){
             return "#4AA082"
-        } else if(rate >= 4 ){
+        } else if(rate >= 5 ){
             return "#DF591D"
+        }else{
+            return "#F8DE9C"
         }
     }
 

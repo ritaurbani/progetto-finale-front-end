@@ -38,7 +38,7 @@ const ProductDetails = () => {
         (<div className="card-detailPage">
           <div className="card-detailPageImg">
             {/* <img src="/img/bank.jpg" alt="" /> */}
-            <img width="200" src={singleProduct.img} alt="" />
+            <img width="250" src={singleProduct.img} alt="" />
           </div>
           <div className="card-detailPageText">
             <p className="pageDetail-title"><strong></strong>{singleProduct.title}</p>

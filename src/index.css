@@ -199,13 +199,14 @@ input {
     /* 20px blur for a black that is 0.15% opache */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     max-width:60%;
+    min-height: 400px;
     font-size: 20px;
     font-weight: 300;
     border-radius:8px ;
     color: #333333;
     background-color:#fafafa ;
     transition:background 0.25s ;
-
+    align-items: center;
     /* font-family: "Inconsolata"; */
 }
 
@@ -217,10 +218,19 @@ input {
     /* width: 80px;
     border-radius: 50%; */
     margin-right: 20px;
+    
+}
+.card-detailPageImg img{
+    /* width: 80px;
+    border-radius: 50%; */
+    margin-right: 20px;
 }
 
+
+
 .card-detailPageText{
-    line-height: 3;
+    line-height: 2;
+    min-height: 300px;
 }
 
 /* .card-detailPageText:last-child{
@@ -231,7 +241,7 @@ margin-bottom: 0;} */
 }
 
 .pageDetail-title{
-    margin-top: 0;    
+    /* margin-top: 0;     */
     font-weight: bold;
     margin-bottom: 80px;
 }

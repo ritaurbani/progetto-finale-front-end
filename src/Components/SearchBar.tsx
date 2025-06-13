@@ -1,18 +1,20 @@
 import { useState } from "react"
+import { SearchFilters } from "../types"
 // import { useSearchParams } from "react-router-dom"
 
 
 
 //callback lui comunica  a home la ricerca
 type SearchBarPprops = {
-  onChangeText: (value: string) => void,
+  onChangeText: (filters: SearchFilters) => void,
 }
 
 const SearchBar = ({ onChangeText }: SearchBarPprops) => {
 
-  const [searchValue, setSearchValue] = useState("")
+  const [title, setTitle] = useState("")
+  const [category, setCategory] = useState("")
 
-
+  
   // const handleSearch = ()=> {
   //   setSearchParams({filter:searchValue})
 
@@ -21,15 +23,29 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
   return (
     <>
       {/* <div style={{ position: 'relative' }} className="input-icon"> */}
+
+      <select 
+      value={category}
+      onChange={(e) => {
+        setCategory(e.target.value)
+        //
+        onChangeText({title, category:e.target.value})//invoco la funziona - i filtri comunicano al parent che valore cercare
+        console.log(e.target.value)
+      }}>
+        <option value="">Choose Category</option>
+        <option value="Mutuo">Mutuo</option>
+        <option value="Prestiti Personali">Prestiti</option>
+
+      </select>
         <label htmlFor=""></label>
         <input
           type="text"
           placeholder="search for a product"
-          value={searchValue}
+          value={title}
           onChange={(e) => {
 
-            setSearchValue(e.target.value.toLowerCase())
-            onChangeText(e.target.value)
+            setTitle(e.target.value)
+            onChangeText({category, title:e.target.value})//invoco la funziona
           }
           }
         />

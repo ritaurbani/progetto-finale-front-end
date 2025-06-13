@@ -37,7 +37,8 @@ const ProductDetails = () => {
       {singleProduct ?
         (<div className="card-detailPage">
           <div className="card-detailPageImg">
-            <img src="/img/bank.jpg" alt="" />
+            {/* <img src="/img/bank.jpg" alt="" /> */}
+            <img width="200" src={singleProduct.img} alt="" />
           </div>
           <div className="card-detailPageText">
             <p className="pageDetail-title"><strong></strong>{singleProduct.title}</p>

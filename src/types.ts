@@ -1,5 +1,6 @@
 export type BankProduct = {
     id: number,
+    img:string,
     title: string;
     category: string;
     bankName: string;
@@ -13,4 +14,9 @@ export type ItemToCompare = {
  id: number,
  title: string,
   rate: number
+}
+
+export type SearchFilters = {
+  title: string,
+  category: string
 }

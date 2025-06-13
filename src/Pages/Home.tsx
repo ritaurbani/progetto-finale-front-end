@@ -3,13 +3,26 @@ import { AccountList } from "../Components/AccountList"
 import SearchBar from "../Components/SearchBar"
 import { useEffect, useState, useCallback } from "react"
 import Comparator from "../Components/Comparator"
-import { ItemToCompare, BankProduct } from "../types"
+import { ItemToCompare, BankProduct, SearchFilters } from "../types"
+
+
+function debounce(callback, delay) {
+  let timer;
+  return (value) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback(value)
+    }, delay)
+  }
+}
 
 // type ItemToCompare = {
 //   id: number,
 //   title: string,
 //   rate: number
 // }
+
+
 
 const Home = () => {
 
@@ -74,16 +87,34 @@ const Home = () => {
 
 
   //Azione quando l utente cerca? filtra
-  const handleChangeText = (searchValue: string) => {
-    console.log("stringa ricevuta da input", searchValue)
+  const handleChangeText = useCallback(debounce(
+      async (filters: SearchFilters) => {
+        const {title, category} = filters
+        console.log("stringa ricevuta da input", title)
+         if (title && category) {
+          const response = await fetch(`${API_URL}/bankproducts/?search=${title}&category=${category}`);
+          const results = await response.json();
+          setFilteredProducts(results);
+        }else if(title){
+           const response = await fetch(`${API_URL}/bankproducts/?search=${title}`)
+        const results = await response.json()
+        console.log("filter-search", results)
+        setFilteredProducts(results)
+        } else if (category){
+          const response = await fetch(`${API_URL}/bankproducts/?category=${category}`)
+          const results = await response.json()
+          console.log("filter-search", results)
+          setFilteredProducts(results)
+        } 
+        //filtra su stesso array
+        // const filteredProducts = products.filter((product) => {
+        // return product.category.toLowerCase().includes(searchValue.toLowerCase()) ||
+        // product.title.toLowerCase().includes(searchValue.toLowerCase())
+        // })
+        // setFilteredProducts(filteredProducts)
+      }, 300), [])
 
-    const filteredProducts = products.filter((product) => {
-      return product.category.toLowerCase().includes(searchValue.toLowerCase()) ||
-        product.title.toLowerCase().includes(searchValue.toLowerCase())
-    })
 
-    setFilteredProducts(filteredProducts)
-  }
 
   //products contiene i dati presi da useProducts()
   return (

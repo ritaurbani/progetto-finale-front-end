@@ -8,13 +8,14 @@ import Alert from "./Alert"
 type BankCardProps = {
   title: string,
   id: number,
+  category: string,
   onAdd: (id: number) => void,
   onRemove: (id: number) => void,
   canRemove: boolean
 }
 
 
-const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
+const BankCard = ({ canRemove, title, id, onAdd, onRemove, category }: BankCardProps) => {
   const { favourites, addToFavourites, removeFromFavourites } = useContext(GlobalContext)
   // define a constant isFavourite. It's true when favourites contains an element with the id in the props
   // false otherwise.
@@ -39,7 +40,7 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove }: BankCardProps) => {
       <div className="bankCardContent">
         <div className="title-heart">
           <h3 className="bankCardTitle"><Link to={`bankproducts/${id}`}>{title}</Link></h3>
-
+          <p>{category}</p>
           {
             isFavourite ? (
               <span onClick={() => removeFromFavourites(id)}><i className="is-favourite fa-regular fa-heart"></i></span>

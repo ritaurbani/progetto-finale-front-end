@@ -105,7 +105,9 @@ const Home = () => {
           const results = await response.json()
           console.log("filter-search", results)
           setFilteredProducts(results)
-        } 
+        }else{  
+          fetchProducts()
+              }
         //filtra su stesso array
         // const filteredProducts = products.filter((product) => {
         // return product.category.toLowerCase().includes(searchValue.toLowerCase()) ||

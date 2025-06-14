@@ -13,7 +13,6 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
 
   const [title, setTitle] = useState("")
   const [category, setCategory] = useState("")
-
   
   // const handleSearch = ()=> {
   //   setSearchParams({filter:searchValue})

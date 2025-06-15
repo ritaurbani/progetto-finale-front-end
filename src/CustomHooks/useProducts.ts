@@ -30,7 +30,7 @@ export const useProducts = (): UseProductsReturnType => {
             const response = await fetch(`${API_URL}/bankproducts`)
             const data = await response.json()
             setBankProducts(data)
-        } catch (error: unknown) {//di default e unknown-non puoi usare erro senza prima verificare il suo tipo-forza type checking
+        } catch (error: unknown) {//verifico tipo
             if (error instanceof Error) {
                 setError(error.message)
             }else{
@@ -45,8 +45,6 @@ export const useProducts = (): UseProductsReturnType => {
         fetchProducts()
     }, [])
 
-    //oggetto piu flessibili quando ci sono più valori da ritornare (es. dati, loading, errori).
-    //se ritorno array poi devo ricordare ordine elems
     return { products: bankProducts, isLoading, error, fetchProducts  }
     //uso proprieta
     

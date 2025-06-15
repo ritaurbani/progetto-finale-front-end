@@ -16,6 +16,18 @@ function debounce(callback, delay) {
   }
 }
 
+// export type BankProduct = {
+//   id: number,
+//   img: string,
+//   title: string;
+//   category: string;
+//   bankName: string;
+//   description: string;
+//   rate: number;
+//   durationInYears: number;
+//   canRemove?: boolean
+// }
+
 // type ItemToCompare = {
 //   id: number,
 //   title: string,
@@ -29,7 +41,7 @@ const Home = () => {
   const { isLoading, error, products, fetchProducts } = useProducts()
 
   const [itemsToCompare, setItemsToCompare] = useState<ItemToCompare[]>([])
-  //deve inizialmente contenere tutti i prodotti prima che l'utente inizi a filtrare
+
   const [filteredProducts, setFilteredProducts] = useState<BankProduct[]>(products)
 
 
@@ -67,23 +79,12 @@ const Home = () => {
     ))
   }
 
-
-  // 2. Sincronizza filteredProducts con products
-  //senza useEffect Non c'è un meccanismo che aggiorna filteredProducts quando products cambia
-  //Quando products cambia?
-  //products da vuoto viene popolato con chiamata API
-  // Aggiungi un nuovo prodotto
-  // Modifichi un prodotto esistente
-  // Elimini un prodotto
-  // Pensa a useEffect come a un "ascoltatore" che dice:
-  // "Hey React, ogni volta che products cambia, copia il suo valore in filteredProducts!"
   useEffect(() => {
     setFilteredProducts(products)
   }, [products])
 
 
-
-  //Azione quando l utente cerca? filtra
+  //filtro utente
   const handleChangeText = useCallback(debounce(
       async (filters: SearchFilters) => {
         const {title, category} = filters
@@ -133,9 +134,8 @@ const Home = () => {
       <div className="comparisonLayout">
         <section className="accountList">
           <AccountList
-            //Stai solo passando il valore di products alla prop bankAccounts.
-            //bankAccounts e products hanno stesso tipo BankProducts[]
-            bankAccounts={filteredProducts} //"products" del genitore → "bankAccounts" del figlio
+            //products alla prop bankAccounts.
+            bankAccounts={filteredProducts} //"products" del genitore - "bankAccounts" del figlio
             onAdd={addToComparator}
             onRemove={removeComparator}
           />

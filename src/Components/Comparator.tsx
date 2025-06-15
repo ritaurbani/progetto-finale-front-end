@@ -12,7 +12,7 @@ const Comparator = ({ bankProductsToCompare }: ComparatorProps) => {
     return a.rate - b.rate
   })
 
-  console.log("check if array is empty", bankProductsToCompare)
+  console.log("check array empty or not", bankProductsToCompare)
   return (
     <div className="barComparison">
 

@@ -14,16 +14,12 @@ type BankCardProps = {
   canRemove: boolean
 }
 
-
 const BankCard = ({ canRemove, title, id, onAdd, onRemove, category }: BankCardProps) => {
   const { favourites, addToFavourites, removeFromFavourites } = useContext(GlobalContext)
   // define a constant isFavourite. It's true when favourites contains an element with the id in the props
-  // false otherwise.
-  // Use isFavourite boolean in the JSX part to show the red heart or not.
 
   const foundFavourite = favourites.find((item) => item.id === id)
-
-  const isFavourite = foundFavourite ? true : false; // Boolean(foundFavourite)
+  const isFavourite = foundFavourite ? true : false; 
 
   const [show, setShow] = useState(false)
 

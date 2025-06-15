@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { SearchFilters } from "../types"
-// import { useSearchParams } from "react-router-dom"
 
-
+// export type SearchFilters = {
+//   title: string,
+//   category: string
+// }
 
 //callback lui comunica  a home la ricerca
 type SearchBarPprops = {
@@ -14,10 +16,7 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
   const [title, setTitle] = useState("")
   const [category, setCategory] = useState("")
 
-  // const handleSearch = ()=> {
-  //   setSearchParams({filter:searchValue})
 
-  // }
 
   return (
     <>
@@ -29,7 +28,7 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
           onChange={(e) => {
             setCategory(e.target.value)
             //
-            onChangeText({ title, category: e.target.value })//invoco la funziona - i filtri comunicano al parent che valore cercare
+            onChangeText({ title, category: e.target.value })//che valore cerco al parent
             console.log(e.target.value)
           }}>
           <option value="">Choose Category</option>

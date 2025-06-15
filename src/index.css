@@ -52,23 +52,6 @@ body{
     margin: 20px;
 }
 
-/* .searchContainer{
-    display: flex;
-    gap: 10px;
-}
-
-input {
-    border-radius: 5px;
-    padding: 10px 40px 10px 15px;
-    width: 90%;
-    margin-right: 200px;
-   
-}
-
-.select {
-    border-radius: 5px;
-    padding: 10px 0.5px 10px 10px;
-} */
 
 .searchContainer {
     display: flex;
@@ -322,4 +305,78 @@ margin-bottom: 0;} */
     top:0px ;   
     left:360px ;
     z-index: 999;                
+}
+
+/* /////////////////// */
+
+@media (max-width: 768px) {
+
+    .titles-sections{
+        gap: 40px;
+    }
+   .accountList{
+    width: 30%;
+
+   }
+   .barComparison{
+    width:20%;
+   }
+    .navBar {
+        flex-direction: column;
+        min-height: auto;
+        padding: 15px 20px;
+    }
+
+    .navBar ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    .navBar a {
+        margin-right: 0;
+        padding: 10px;
+    }
+
+
+.searchContainer {
+    flex-direction: column;
+    gap: 8px;
+}
+
+.select {
+    width: 100%;
+}
+ 
+    .card {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .bankCardContent {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bankCardBtnAdd {
+        margin-top: 10px;
+        width: 100%;
+        padding: 8px;
+    }
+}
+
+ @media screen and (max-width: 480px){
+    .navBar {
+        padding: 10px;
+    }
+
+    .navBar ul {
+        gap: 8px;
+    }
+
+    .navBar a {
+        font-size: 14px;
+        padding: 8px;
+    }
 }

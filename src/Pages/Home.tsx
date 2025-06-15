@@ -120,7 +120,7 @@ const Home = () => {
     <div className="container">
       <h2>Search for the lowest rate</h2>
       <div className="titles-sections"
-        style={{ display: "flex", alignItems: "center", justifyContent: "start", margin: "40px 0" }}>
+        style={{ display: "flex", alignItems: "center", justifyContent: "start", margin: "40px 0", gap: "30px" }}>
         <SearchBar
           onChangeText={handleChangeText}
         />

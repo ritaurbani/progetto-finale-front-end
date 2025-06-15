@@ -43,7 +43,7 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove, category }: BankCardP
           <p>{category}</p>
           {
             isFavourite ? (
-              <span onClick={() => removeFromFavourites(id)}><i className="is-favourite fa-regular fa-heart"></i></span>
+              <span onClick={() => removeFromFavourites(id)}>❤️</span>
 
             ) : (
               <span onClick={() => {
@@ -51,8 +51,9 @@ const BankCard = ({ canRemove, title, id, onAdd, onRemove, category }: BankCardP
                 addToFavourites({ id, title })
                 setShow(true)
 
-              }}><i className="fa-regular fa-heart"></i></span>)
-
+                }}>🤍</span>)
+            // < i className="is-favourite fa-regular fa-heart"></i>
+            // < i className="fa-regular fa-heart"></i>
           }
           <Alert
           text="Added to Favourites"

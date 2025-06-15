@@ -7,7 +7,7 @@ import { ItemToCompare, BankProduct, SearchFilters } from "../types"
 
 
 function debounce(callback, delay) {
-  let timer;
+  let timer;  
   return (value) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
@@ -22,8 +22,6 @@ function debounce(callback, delay) {
 //   rate: number
 // }
 
-
-
 const Home = () => {
 
   const API_URL = "http://localhost:3001"
@@ -36,7 +34,6 @@ const Home = () => {
 
 
   const addToComparator = async (id: number) => {
-    console.log("inizio funzione")
     const response = await fetch(`${API_URL}/bankproducts/${id}`)
     const result = await response.json()
     console.log("recupero id", result)
@@ -155,8 +152,3 @@ const Home = () => {
 
 export default Home
 
-// useProducts() → Restituisce { products: BankProduct[] }
-//        ↓
-// Home(genitore) → Prende `products` e lo passa come valore della prop`bankAccounts`
-//        ↓
-// AccountList(figlio) → Riceve`bankAccounts`(che è il vecchio`products` del genitore)

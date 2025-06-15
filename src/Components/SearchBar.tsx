@@ -40,7 +40,7 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
         <label htmlFor=""></label>
         <input
           type="text"
-          placeholder="search for a product"
+          placeholder="Search for a product"
           value={title}
           onChange={(e) => {
 

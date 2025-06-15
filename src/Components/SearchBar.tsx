@@ -13,7 +13,7 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
 
   const [title, setTitle] = useState("")
   const [category, setCategory] = useState("")
-  
+
   // const handleSearch = ()=> {
   //   setSearchParams({filter:searchValue})
 
@@ -22,20 +22,21 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
   return (
     <>
       {/* <div style={{ position: 'relative' }} className="input-icon"> */}
+      <div className="searchContainer">
+        <select
+          className="select"
+          value={category}
+          onChange={(e) => {
+            setCategory(e.target.value)
+            //
+            onChangeText({ title, category: e.target.value })//invoco la funziona - i filtri comunicano al parent che valore cercare
+            console.log(e.target.value)
+          }}>
+          <option value="">Choose Category</option>
+          <option value="Mutuo">Mutuo</option>
+          <option value="Prestiti Personali">Prestiti</option>
 
-      <select 
-      value={category}
-      onChange={(e) => {
-        setCategory(e.target.value)
-        //
-        onChangeText({title, category:e.target.value})//invoco la funziona - i filtri comunicano al parent che valore cercare
-        console.log(e.target.value)
-      }}>
-        <option value="">Choose Category</option>
-        <option value="Mutuo">Mutuo</option>
-        <option value="Prestiti Personali">Prestiti</option>
-
-      </select>
+        </select>
         <label htmlFor=""></label>
         <input
           type="text"
@@ -44,11 +45,12 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
           onChange={(e) => {
 
             setTitle(e.target.value)
-            onChangeText({category, title:e.target.value})//invoco la funziona
+            onChangeText({ category, title: e.target.value })//invoco la funziona
           }
           }
         />
-        {/* <i className="fa-solid fa-magnifying-glass"></i> */}
+      </div>
+      {/* <i className="fa-solid fa-magnifying-glass"></i> */}
       {/* </div> */}
     </>
   )

@@ -52,14 +52,44 @@ body{
     margin: 20px;
 }
 
+/* .searchContainer{
+    display: flex;
+    gap: 10px;
+}
+
 input {
-  
-    /* margin: auto; */
     border-radius: 5px;
     padding: 10px 40px 10px 15px;
-    width: 40%;
+    width: 90%;
     margin-right: 200px;
+   
 }
+
+.select {
+    border-radius: 5px;
+    padding: 10px 0.5px 10px 10px;
+} */
+
+.searchContainer {
+    display: flex;
+    gap: 10px;
+    width: 48%;
+    max-width: 1200px;
+}
+
+input {
+    border-radius: 5px;
+    padding: 10px 15px;
+    flex-grow: 1;
+}
+
+.select {
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+}
+
+
 .fa-solid{
     position: absolute;
     right:10px;
@@ -72,7 +102,8 @@ input {
     border: 0.5px solid grey;
     margin-bottom: 10px;
     border-radius: 5px;
-    padding: 10px;    
+    padding: 10px;   
+    position: relative; 
 }
 
 .card:hover {
@@ -226,8 +257,6 @@ input {
     margin-right: 20px;
 }
 
-
-
 .card-detailPageText{
     line-height: 2;
     min-height: 300px;
@@ -279,4 +308,18 @@ margin-bottom: 0;} */
     padding: 10px;
     border-radius: 5px;
     background-color: #fafafa;
+}
+
+.alertBox{
+   
+    padding: 10px 10px;
+    border-radius: 8px;
+    background-color: #55394D;
+    color: white;
+    font-size: 0.8rem;
+    align-content: center;   
+    position: absolute;   
+    top:0px ;   
+    left:360px ;
+    z-index: 999;                
 }

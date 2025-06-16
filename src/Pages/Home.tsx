@@ -116,7 +116,7 @@ const Home = () => {
 
 
 
-  //products contiene i dati presi da useProducts()
+  
   return (
     <div className="container">
       <h2>Search for the lowest rate</h2>

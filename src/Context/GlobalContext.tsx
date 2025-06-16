@@ -2,7 +2,9 @@ import { createContext, useState, useEffect } from "react";
 import { BankProduct } from "../types";
 import { useProducts } from "../CustomHooks/useProducts";
 
-type FavouriteItem = { id: number, title: string }
+type FavouriteItem = { 
+    id: number, 
+    title: string }
 
 type FavouriteContextType = {
     favourites: FavouriteItem[];
@@ -17,12 +19,11 @@ export const GlobalContext = createContext<FavouriteContextType>({
     addToFavourites: () => { },
     removeFromFavourites: () => { },
 
-});//creo contesto accessibile da altri componenti
+});//mi creo contesto accessibile da altri componenti
 
 export function GlobalProvider({ children }: { children: React.ReactNode }) {//qualsiasi children che inserisco all interno di questo componente
 
     const [favourites, setFavourites] = useState<FavouriteItem[]>([])
-
     const [showAlert, setShowAlert] = useState(false)
 
 
@@ -31,7 +32,6 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {//q
 
     // It should accept a { id: number, title: string } as function parameter and add it to the favourite list
     const addToFavourites = (newItem: FavouriteItem) => {
-        // red should be handled iinside the BankCard by using the context
         setFavourites([...favourites, newItem])
         showAlert ? "added" : "not added"
     }

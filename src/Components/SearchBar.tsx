@@ -27,7 +27,6 @@ const SearchBar = ({ onChangeText }: SearchBarPprops) => {
           value={category}
           onChange={(e) => {
             setCategory(e.target.value)
-            //
             onChangeText({ title, category: e.target.value })//che valore cerco al parent
             console.log(e.target.value)
           }}>

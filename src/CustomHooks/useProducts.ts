@@ -2,6 +2,17 @@
 import { useState, useEffect } from 'react'
 import { BankProduct } from '../types'
 
+// export type BankProduct = {
+//     id: number,
+//     img: string,
+//     title: string;
+//     category: string;
+//     bankName: string;
+//     description: string;
+//     rate: number;
+//     durationInYears: number;
+//     canRemove?: boolean
+// }
 
 type UseProductsReturnType = {
     isLoading: boolean,
